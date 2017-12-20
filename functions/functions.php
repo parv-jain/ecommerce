@@ -15,10 +15,21 @@ function getIp() {
 }
 
 function cart(){
+  global $con;
   if(isset($_GET['add_cart'])){
     $ip = getIp();
     $pro_id = $_GET['add_cart'];
     $check_pro = "select * from cart where ip_add = '$ip' and p_id = '$pro_id'";
+    $run_check = mysqli_query($con, $check_pro);
+    if(mysqli_num_rows($run_check)>0){
+      //do nothing
+    }
+    else{
+      //add to cart table
+      $insert_pro = "insert into cart (p_id,ip_add,qty) values ('$pro_id','$ip',1)";
+      $run_pro = mysqli_query($con, $insert_pro);
+      echo "<script>window.open('index.php','_self');</script>";
+    }
   }
 }
 
