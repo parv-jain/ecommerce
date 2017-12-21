@@ -2,6 +2,7 @@
 
 $con = mysqli_connect("localhost","root","parv1608","ecommerce");
 
+//getting ip address
 function getIp() {
     $ip = $_SERVER['REMOTE_ADDR'];
 
@@ -14,6 +15,7 @@ function getIp() {
     return $ip;
 }
 
+//adding item to cart
 function cart(){
   global $con;
   if(isset($_GET['add_cart'])){
@@ -33,6 +35,35 @@ function cart(){
   }
 }
 
+//getting the total added items to cart
+function total_items(){
+  global $con;
+  $ip = getIp();
+  $get_items = "select * from cart where ip_add = '$ip'";
+  $run_items = mysqli_query($con,$get_items);
+  $count_items = mysqli_num_rows($run_items);
+  echo $count_items;
+}
+
+//getting total price of items added to cart
+function total_price(){
+  global $con;
+  $ip = getIp();
+  $sel_price = "select * from cart where ip_add = '$ip'";
+  $run_price = mysqli_query($con,$sel_price);
+  $tot_price = 0;
+  while($p_price = mysqli_fetch_assoc($run_price)){
+    $pro_id = $p_price['p_id'];
+    $pro_price = "select * from products where product_id = '$pro_id'";
+    $run_pro_price = mysqli_query($con,$pro_price);
+    $pro_row = mysqli_fetch_assoc($run_pro_price);
+    $product_price = $pro_row['product_price'];
+    $tot_price += $product_price;
+  }
+  echo 'Rs.'.$tot_price;
+}
+
+//getting category
 function getCats(){
   global $con;
   $get_cats = "select * from categories";
@@ -44,6 +75,7 @@ function getCats(){
   }
 }
 
+//getting brands
 function getBrands(){
   global $con;
   $get_brands = "select * from brands";
@@ -55,6 +87,7 @@ function getBrands(){
   }
 }
 
+//getting products
 function getPro(){
   global $con;
   if(!isset($_GET['cat'])){

@@ -51,29 +51,38 @@ require_once 'functions/functions.php';
         <div id="content_area">
           <?php cart(); ?>
           <div id="shopping_cart">
-            <span style="float:right; font-size:18px; padding:5px; line-height:40px;">
-              <?php
-              if(!isset($_SESSION['customer_email'])){
-                echo 'Welcome Guest!';
-              }
-              else{
-                echo 'Welcome '.$_SESSION['customer_email'];
-              }
-              ?>
-              <b style="color:yellow">Shopping Cart - </b>Total Items: <?php total_items(); ?> Total Price: <?php total_price(); ?>
-              <a href='cart.php' style="color:yellow">Go to Cart</a>
-              <?php
+            <div id="shopping_cart">
+              <span style="float:right; font-size:18px; padding:5px; line-height:40px;">
+                <?php
                 if(!isset($_SESSION['customer_email'])){
-                  echo "<a href='checkout.php' style='color:orange'>Login</a>";
+                  echo 'Welcome Guest!';
                 }
                 else{
-                  echo "<a href='logout.php' style='color:orange'>Logout</a>";
+                  echo 'Welcome '.$_SESSION['customer_email'];
                 }
-              ?>
-            </span>
+                ?>
+                <b style="color:yellow">Shopping Cart - </b>Total Items: <?php total_items(); ?> Total Price: <?php total_price(); ?>
+                <a href='cart.php' style="color:yellow">Go to Cart</a>
+                <?php
+                  if(!isset($_SESSION['customer_email'])){
+                    echo "<a href='checkout.php' style='color:orange'>Login</a>";
+                  }
+                  else{
+                    echo "<a href='logout.php' style='color:orange'>Logout</a>";
+                  }
+                ?>
+              </span>
+            </div>
           </div>
           <div id="product_box">
-            <?php getPro(); ?>
+            <?php
+              if(!isset($_SESSION['customer_email'])){
+                include('customer_login.php');
+              }
+              else{
+                include('payment.php');
+              }
+            ?>
           </div>
         </div>
       </div>

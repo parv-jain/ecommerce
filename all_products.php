@@ -1,4 +1,7 @@
-<?php require_once 'functions/functions.php'; ?>
+<?php
+session_start();
+require_once 'functions/functions.php';
+?>
 <!DOCTYPE>
 <html>
   <head>
@@ -17,9 +20,9 @@
         <ul id="menu">
           <li><a href="index.php">Home</a></li>
           <li><a href="all_products.php">All Products</a></li>
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Shopping Cart</a></li>
+          <li><a href="customer/my_account.php">My Account</a></li>
+          <li><a href="customer_register.php">Sign Up</a></li>
+          <li><a href="cart.php">Shopping Cart</a></li>
           <li><a href="#">Contact Us</a></li>
         </ul>
 
@@ -48,7 +51,28 @@
         <div id="content_area">
           <?php cart(); ?>
           <div id="shopping_cart">
-            <span style="float:right; font-size:18px; padding:5px; line-height:40px;">Welcome Guest! <b style="color:yellow">Shopping Cart - </b>Total Items: Total Price: <a href='cart.php' style="color:yellow">Go to Cart</a></span>
+            <div id="shopping_cart">
+              <span style="float:right; font-size:18px; padding:5px; line-height:40px;">
+                <?php
+                if(!isset($_SESSION['customer_email'])){
+                  echo 'Welcome Guest!';
+                }
+                else{
+                  echo 'Welcome '.$_SESSION['customer_email'];
+                }
+                ?>
+                <b style="color:yellow">Shopping Cart - </b>Total Items: <?php total_items(); ?> Total Price: <?php total_price(); ?>
+                <a href='cart.php' style="color:yellow">Go to Cart</a>
+                <?php
+                  if(!isset($_SESSION['customer_email'])){
+                    echo "<a href='checkout.php' style='color:orange'>Login</a>";
+                  }
+                  else{
+                    echo "<a href='logout.php' style='color:orange'>Logout</a>";
+                  }
+                ?>
+              </span>
+            </div>
           </div>
           <div id="product_box">
             <?php
