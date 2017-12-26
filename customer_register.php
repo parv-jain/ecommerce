@@ -12,8 +12,8 @@ require_once 'functions/functions.php';
     <div class="main_wrapper">
 
       <div class="header_wrapper">
-        <img id="logo" src="images/logo.gif">
-        <img id="banner" src="images/ad_banner.gif">
+        <img id="logo" src="">
+        <img id="banner" src="">
       </div>
 
       <div class="menubar">
