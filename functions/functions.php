@@ -58,9 +58,9 @@ function total_price(){
     $run_pro_price = mysqli_query($con,$pro_price);
     $pro_row = mysqli_fetch_assoc($run_pro_price);
     $product_price = $pro_row['product_price'];
-    $tot_price += $product_price;
-  }
-  echo 'Rs.'.$tot_price;
+    $qty = $p_price['qty'];
+    $tot_price += ($product_price*$qty);  }
+  echo $tot_price;
 }
 
 //getting category
@@ -109,7 +109,7 @@ function getPro(){
               <div id='single_product'>
                 <h3>$pro_title</h3>
                 <img src='admin_area/product_images/$pro_image' width='180' height='180'>
-                <p><b>Rs. $pro_price </b></p>
+                <p><b> $pro_price </b></p>
 
                 <a href='details.php?pro_id=$pro_id' style='float:left'>Details</a>
                 <a href='index.php?add_cart=$pro_id'><button style='float:right'>Add to cart</button></a>
@@ -140,7 +140,7 @@ function getPro(){
                 <div id='single_product'>
                   <h3>$pro_title</h3>
                   <img src='admin_area/product_images/$pro_image' width='180' height='180'>
-                  <p><b>Rs. $pro_price </b></p>
+                  <p><b> $pro_price </b></p>
 
                   <a href='details.php?pro_id=$pro_id' style='float:left'>Details</a>
                   <a href='index.php?add_cart=$pro_id'><button style='float:right'>Add to cart</button></a>
@@ -173,7 +173,7 @@ function getPro(){
               <div id='single_product'>
                 <h3>$pro_title</h3>
                 <img src='admin_area/product_images/$pro_image' width='180' height='180'>
-                <p><b>Rs. $pro_price </b></p>
+                <p><b> $pro_price </b></p>
 
                 <a href='details.php?pro_id=$pro_id' style='float:left'>Details</a>
                 <a href='index.php?add_cart=$pro_id'><button style='float:right'>Add to cart</button></a>

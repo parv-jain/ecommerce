@@ -2,7 +2,7 @@
   require_once 'includes/db.php';
 ?>
     <form action="" method="post" enctype="multipart/form-data">
-      <table align="center" width="600" border="2" bgcolor="#3973ac" style="margin:auto">
+      <table align="center" width="795" bgcolor="pink" style="margin:auto">
         <tr align="center">
           <td colspan="2"><h2>Insert New Product Here</h2></td>
         </tr>

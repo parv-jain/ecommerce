@@ -64,6 +64,24 @@
           if(isset($_GET['delete_cust'])){
             include("delete_customers.php");
           }
+          if(isset($_GET['view_orders'])){
+            include("view_orders.php");
+          }
+          if(isset($_GET['view_payments'])){
+            include("view_payments.php");
+          }
+
+          if(isset($_GET['confirm_order'])){
+            include("includes/db.php");
+            $order_id = $_GET['confirm_order'];
+            $status = 'Completed';
+            echo $update_order = "update orders set status = '$status' where order_id = '$order_id'";
+            $run_update = mysqli_query($con,$update_order);
+            if($run_update){
+              echo "<script>alert('Order was updated');</script>";
+              echo "<script>window.open('index.php?view_orders','_self');</script>";
+            }
+          }
 
         ?>
       </div>

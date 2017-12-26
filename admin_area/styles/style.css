@@ -41,14 +41,14 @@ body{
 
 #left{
   width:795px;
-  height:auto;
+  height:800px;
   background:#E0E0E0;
   float:left;
 }
 
 #right{
   width:200px;
-  height:auto;
+  height:800px;
   background:#3973ac;
   float:right;
   border-left:5px groove orange;
@@ -65,20 +65,6 @@ body{
 }
 
 #right a:hover{
-  text-decoration: underline;
-  color: orange;
-}
-
-#left a{
-  text-decoration: none;
-  color: white;
-  font-size: 18px;
-  padding:6px;
-  margin:6px;
-  display:block;
-}
-
-#left a:hover{
   text-decoration: underline;
   color: orange;
 }

@@ -1,4 +1,4 @@
-<table align="center" width="600" bgcolor="#3973ac" style="margin:auto">
+<table align="center" width="795" bgcolor="pink" style="margin:auto">
   <tr align="center">
     <td colspan="5"><h2>View All Products</h2></td>
   </tr>

@@ -108,12 +108,12 @@ require_once 'functions/functions.php';
                         ?>
                       </td>
                       <td><input type="number" name="<?php echo $pro_id; ?>" value="<?php echo $qty; ?>" min="1"></td>
-                      <td><?php echo 'Rs.'.$product_price; ?></td>
+                      <td><?php echo $product_price; ?></td>
                     </tr>
                   <?php
                   } ?>
                   <tr align="right">
-                    <td colspan="4"><?php echo 'Total: Rs.'.$tot_price; ?></td>
+                    <td colspan="4"><?php echo 'Total: '.$tot_price; ?></td>
                   </tr>
                   <tr align="center">
                     <td colspan="2"><input type="submit" name="update_cart" value="Update Cart"></td>
@@ -134,6 +134,7 @@ require_once 'functions/functions.php';
                     $update_qty = "update cart set qty = $pro_qty where p_id = '$id' and ip_add = '$ip'";
                     $run_update_qty = mysqli_query($con,$update_qty);
                   }
+                  echo "<script>window.open('cart.php','_self');</script>";
               }
               if(isset($_POST['update_cart']) && !empty($_POST['remove'])){
                 foreach($_POST['remove'] as $remove_id){
@@ -144,6 +145,7 @@ require_once 'functions/functions.php';
                   }
                 }
               }
+
               if(isset($_POST['continue'])){
                 echo "<script>window.open('all_products.php','_self');</script>";
               }
